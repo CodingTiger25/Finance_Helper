@@ -8,15 +8,28 @@
 }
 
 .Bill-container{
-  height: 800px;
-  width: 800px;
-  margin-top: 10%;
-  margin-left: 40%;
+  height: 700px;
+  width: 700px;
+  margin-top: 5%;
+  margin-left: 37%;
   background-color: gray;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.balance{
+  font-weight: bold;
+  font-size: 100px;
+}
+
+#addBill{
+  display: none;
+}
+
+#closeBill{
+  display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
