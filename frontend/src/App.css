@@ -13,7 +13,8 @@
   margin-top: 5%;
   margin-left: 37%;
   background-color: gray;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -22,6 +23,22 @@
 .balance{
   font-weight: bold;
   font-size: 100px;
+}
+
+.nameCol{
+  display: table-column;
+  position: relative;
+  bottom: 320px;
+  right: 260px;
+  font-weight: bolder;
+}
+
+.billName{
+  display: grid;
+  position: relative;
+  bottom: 190px;
+  right: 320px;
+  font-weight: bolder;
 }
 
 #addBill{

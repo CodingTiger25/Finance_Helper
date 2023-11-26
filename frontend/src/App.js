@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios"
 
 function App() {
 
   const [balance, setBalance] = useState(0);
+
+  const [billName, setBillName] = useState();
+  const [billCost, setBillCost] = useState();
+  const [bills, setBills] = useState([]);
 
   function addItem()
   {
@@ -15,6 +20,14 @@ function App() {
     {
         document.getElementById('closeBill').style.display = 'none';
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/bills").then((res) => {
+            setBills(res.data);
+        });
+    }, []);
+
+  console.log(bills);
 
   return (
     <div className="App">
@@ -36,18 +49,32 @@ function App() {
 
                <label> Bill name: </label>
                 <input type={"text"}/>
-
-
                 <label> Bill cost: </label>
                 <input type={"text"}/>
 
                 <button onClick={closeItem}>X</button>
-
             </form>
         </div>
 
         <div className= "Bill-container">
+            <div className="nameCol">
+                <p>Name</p>
+            </div>
 
+            <div>
+                <p>Price</p>
+            </div>
+
+            {bills.map((i) =>
+                <div key={i.id}>
+                    <div className="billName">
+                        <p>{i.name}</p>
+                    </div>
+
+                    <p>{i.price}</p>
+                </div>
+
+            )}
         </div>
     </div>
   );

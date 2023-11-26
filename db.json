@@ -1,0 +1,14 @@
+{
+  "bills": [
+    {
+      "id": 0,
+      "name": "Netflix",
+      "price": 15.99
+    },
+    {
+      "name": "hulu",
+      "price": 14.99,
+      "id": 1
+    }
+  ]
+}
