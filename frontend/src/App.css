@@ -13,11 +13,8 @@
   margin-top: 5%;
   margin-left: 37%;
   background-color: gray;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .balance{
@@ -25,20 +22,43 @@
   font-size: 100px;
 }
 
+.namingCon{
+  display: flex;
+}
+
 .nameCol{
-  display: table-column;
+  display: flex;
+  flex-direction: row;
   position: relative;
-  bottom: 320px;
-  right: 260px;
+  top:auto;
+  left: 20px;
+  font-weight: bolder;
+}
+
+.priceCol{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: auto;
+  left: 600px;
   font-weight: bolder;
 }
 
 .billName{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  bottom: 190px;
-  right: 320px;
-  font-weight: bolder;
+  right: 305px;
+  bottom: auto;
+}
+
+.billAmount{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 300px;
+  top: auto;
+  bottom: 55px;
 }
 
 #addBill{

@@ -57,13 +57,17 @@ function App() {
         </div>
 
         <div className= "Bill-container">
-            <div className="nameCol">
-                <p>Name</p>
+
+            <div className="namingCon">
+                <div className="nameCol">
+                    <p>Name</p>
+                </div>
+
+                <div className="priceCol">
+                    <p>Price</p>
+                </div>
             </div>
 
-            <div>
-                <p>Price</p>
-            </div>
 
             {bills.map((i) =>
                 <div key={i.id}>
@@ -71,7 +75,10 @@ function App() {
                         <p>{i.name}</p>
                     </div>
 
-                    <p>{i.price}</p>
+                    <div className="billAmount">
+                        <p>{i.price}</p>
+                    </div>
+
                 </div>
 
             )}
