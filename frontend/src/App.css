@@ -9,7 +9,7 @@
 
 .Bill-container{
   height: 700px;
-  width: 700px;
+  width: 750px;
   margin-top: 5%;
   margin-left: 37%;
   background-color: gray;
@@ -42,6 +42,14 @@
   top: auto;
   left: 600px;
   font-weight: bolder;
+}
+
+.checkBill{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 303px;
+  top: 36px;
 }
 
 .billName{

@@ -72,6 +72,10 @@ function App() {
             {bills.map((i) =>
                 <div key={i.id}>
                     <div className="billName">
+                        <div className="checkBill">
+                            <input type={"checkbox"}/>
+                        </div>
+
                         <p>{i.name}</p>
                     </div>
 
