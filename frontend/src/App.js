@@ -11,15 +11,28 @@ function App() {
   const [billCost, setBillCost] = useState();
   const [bills, setBills] = useState([]);
 
-  function addItem()
-  {
-      document.getElementById('addBill').style.display = 'block';
-  }
-
-    function closeItem()
+      function addItem()
+      {
+          document.getElementById('addBill').style.display = 'block';
+      }
+    function closeItem(e)
     {
+        e.preventDefault();
         document.getElementById('closeBill').style.display = 'none';
     }
+
+    function addBalance()
+    {
+        document.getElementById('addBalance').style.display = 'block';
+    }
+
+    function submitBalance(e)
+    {
+       // e.preventDefault()
+        document.getElementById("addBalance").style.display ="none";
+    }
+
+
 
     useEffect(() => {
         axios.get("http://localhost:3000/bills").then((res) => {
@@ -43,6 +56,9 @@ function App() {
         <div>
             <button onClick={addItem}>Add item</button>
         </div>
+        <div>
+            <button onClick={addBalance}>Add balance</button>
+        </div>
 
         <div>
             <form id="addBill">
@@ -54,6 +70,13 @@ function App() {
 
                 <button onClick={closeItem}>X</button>
             </form>
+        </div>
+
+        <div id="addBalance">
+            <input onChange={(e) => setBalance(parseInt(e.target.value))} type={"text"}/>
+            <label>Enter balance: </label>
+            <button onClick={submitBalance}>Submit amount</button>
+
         </div>
 
         <div className= "Bill-container">
