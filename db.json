@@ -1,19 +1,22 @@
 {
   "bills": [
     {
-      "id": 0,
-      "name": "Netflix",
-      "price": 15.99
-    },
-    {
       "name": "hulu",
       "price": 14.99,
-      "id": 1
+      "id": 1,
+      "duedate": "12/9"
+    },
+    {
+      "id": 0,
+      "name": "Netflix",
+      "price": 15.99,
+      "duedate": "12/15"
     },
     {
       "name": "Car Note",
       "price": 442.18,
-      "id": 2
+      "id": 2,
+      "duedate": "12/28"
     }
   ]
 }

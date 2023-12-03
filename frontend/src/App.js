@@ -59,12 +59,19 @@ function App() {
         <div className= "Bill-container">
 
             <div className="namingCon">
+                <div className="paidCol">
+                    Paid
+                </div>
                 <div className="nameCol">
                     <p>Name</p>
                 </div>
 
                 <div className="priceCol">
                     <p>Price</p>
+                </div>
+
+                <div className="dueDateCol">
+                    Due date
                 </div>
             </div>
 
@@ -81,6 +88,11 @@ function App() {
 
                     <div className="billAmount">
                         <p>{i.price}</p>
+                    </div>
+
+                    <div className="dueDate">
+                        <p>{i.duedate}</p>
+
                     </div>
 
                 </div>

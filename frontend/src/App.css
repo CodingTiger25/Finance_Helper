@@ -8,7 +8,7 @@
 }
 
 .Bill-container{
-  height: 700px;
+  height: 750px;
   width: 750px;
   margin-top: 5%;
   margin-left: 37%;
@@ -26,12 +26,21 @@
   display: flex;
 }
 
-.nameCol{
+.paidCol{
   display: flex;
   flex-direction: row;
   position: relative;
   top:auto;
-  left: 20px;
+  left: 10px;
+  font-weight: bolder;
+
+}
+.nameCol{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top:-17px;
+  left: 100px;
   font-weight: bolder;
 }
 
@@ -39,16 +48,26 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  top: auto;
-  left: 600px;
+  top: -15px;
+  left: 400px;
   font-weight: bolder;
+}
+
+.dueDateCol{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top:auto;
+  left: 550px;
+  font-weight: bolder;
+
 }
 
 .checkBill{
   display: flex;
   flex-direction: row;
   position: relative;
-  left: 303px;
+  left: 242px;
   top: 36px;
 }
 
@@ -56,7 +75,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  right: 305px;
+  right: 225px;
   bottom: auto;
 }
 
@@ -64,9 +83,18 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  left: 300px;
+  left: 120px;
   top: auto;
   bottom: 55px;
+}
+
+.dueDate{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 320px;
+  top: auto;
+  bottom: 110px;
 }
 
 #addBill{
