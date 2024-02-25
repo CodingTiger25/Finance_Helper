@@ -5,11 +5,11 @@ import axios from "axios"
 
 function App() {
 
-  const [balance, setBalance] = useState(0);
+  let [balance, setBalance] = useState(0);
 
-  const [billName, setBillName] = useState();
+  const [billName, setBillName] = useState([]);
   const [billCost, setBillCost] = useState();
-  const [bills, setBills] = useState([]);
+  //const [bills, setBills] = useState([]);
 
       function addItem()
       {
@@ -32,15 +32,63 @@ function App() {
         document.getElementById("addBalance").style.display ="none";
     }
 
+    function deductBalance(e)
+    {
+
+
+        document.querySelector("button").addEventListener("click", function ()
+        {
+
+        })
+       /* let reduce_c = document.getElementById("reduce");
+
+        if(reduce_c.checked)
+        {
+            setBalance(balance - e.price);
+        }*/
+    }
+
+    function displayName(List)
+    {
+        return List.map((d) => (
+            <div>
+                <li>
+                    {d.name}
+                </li>
+            </div>
+        ))
+    }
+
+    function displayPrice(List)
+    {
+        return List.map((d) => (
+            <div>
+                <li>
+                    {d.price}
+                </li>
+            </div>
+        ))
+    }
+
 
 
     useEffect(() => {
-        axios.get("http://localhost:3000/bills").then((res) => {
-            setBills(res.data);
+        axios.get("http://localhost:3000/account").then((res) => {
+           // setBills(res.data);
+            setBalance(res.data.balance);
+            setBillName(res.data.bills);
+            console.log(res.data)
         });
+       /* axios.get("http://localhost:3000/account/balance").then((res) => {
+            setBalance(res.data);
+        });*/
+
     }, []);
 
-  console.log(bills);
+
+  console.log(balance);
+  console.log(billName);
+
 
   return (
     <div className="App">
@@ -87,10 +135,14 @@ function App() {
                 </div>
                 <div className="nameCol">
                     <p>Name</p>
+
+                    {displayName(billName)}
                 </div>
 
                 <div className="priceCol">
                     <p>Price</p>
+
+                    {displayPrice(billName)}
                 </div>
 
                 <div className="dueDateCol">
@@ -99,11 +151,11 @@ function App() {
             </div>
 
 
-            {bills.map((i) =>
+           {/* {bills.map((i) =>
                 <div key={i.id}>
                     <div className="billName">
                         <div className="checkBill">
-                            <input type={"checkbox"}/>
+                            <input type={"checkbox"} id = "reduce" onClick={deductBalance(i.price)}/>
                         </div>
 
                         <p>{i.name}</p>
@@ -120,7 +172,7 @@ function App() {
 
                 </div>
 
-            )}
+            )}*/}
         </div>
     </div>
   );

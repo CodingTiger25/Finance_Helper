@@ -1,4 +1,10 @@
 {
+
+  "account" : {
+
+    "balance": 4000,
+
+
   "bills": [
     {
       "name": "hulu",
@@ -18,5 +24,8 @@
       "id": 2,
       "duedate": "12/28"
     }
-  ]
+          ]
+  }
+
 }
+
