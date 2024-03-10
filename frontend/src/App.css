@@ -15,6 +15,29 @@
   background-color: gray;
   display: flex;
   flex-direction: column;
+  column-count: 4;
+}
+
+.input-container input {
+  border: none;
+  box-sizing: border-box;
+  outline: 0;
+  padding: .75rem;
+  position: relative;
+  width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
 }
 
 .balance{
@@ -24,6 +47,10 @@
 
 .namingCon{
   display: flex;
+}
+
+.main{
+  column-count: 4;
 }
 
 .paidCol{
@@ -37,19 +64,37 @@
 }
 .nameCol{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   top:-17px;
-  left: 100px;
+  left: 180px;
+  font-weight: bolder;
+}
+
+.billTitle{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top:-17px;
+  left: -5px;
   font-weight: bolder;
 }
 
 .priceCol{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   top: -15px;
   left: 400px;
+  font-weight: bolder;
+}
+
+.billPrice{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top:-17px;
+  left: -5px;
   font-weight: bolder;
 }
 

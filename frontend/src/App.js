@@ -8,8 +8,9 @@ function App() {
   let [balance, setBalance] = useState(0);
 
   const [billName, setBillName] = useState([]);
+  const [billTitle, setBillTitle] = useState("");
   const [billCost, setBillCost] = useState();
-  //const [bills, setBills] = useState([]);
+  const [billDate, setBillDate] = useState();
 
       function addItem()
       {
@@ -51,10 +52,10 @@ function App() {
     function displayName(List)
     {
         return List.map((d) => (
-            <div>
-                <li>
+            <div className={"billTitle"}>
+                <p>
                     {d.name}
-                </li>
+                </p>
             </div>
         ))
     }
@@ -62,12 +63,25 @@ function App() {
     function displayPrice(List)
     {
         return List.map((d) => (
-            <div>
-                <li>
+            <div className={"billPrice"}>
+                <p>
                     {d.price}
-                </li>
+                </p>
             </div>
         ))
+    }
+
+    function addBill()
+    {
+        axios.post("http://localhost:3000/account/bills", {
+            "name": billTitle,
+            "price": billCost,
+            "duedate": billDate
+
+        })
+        alert(billTitle + " added to list");
+        window.location.reload();
+
     }
 
 
@@ -107,15 +121,23 @@ function App() {
         <div>
             <button onClick={addBalance}>Add balance</button>
         </div>
+        <div>
+
+        </div>
 
         <div>
             <form id="addBill">
 
                <label> Bill name: </label>
-                <input type={"text"}/>
+                <input onChange={e => setBillTitle(e.target.value)} type={"text"}/>
                 <label> Bill cost: </label>
-                <input type={"text"}/>
+                <input onChange={(e) => setBillCost(parseInt(e.target.value))} type={"text"}/>
+                <label> Due date: </label>
+                <input onChange={e => {
+                    setBillDate(e.target.value);
+                }} type={"date"}/>
 
+                <button onClick={addBill}>Submit</button>
                 <button onClick={closeItem}>X</button>
             </form>
         </div>
