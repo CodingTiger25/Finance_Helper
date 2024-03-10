@@ -98,6 +98,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: bolder;
 }
 
+.date{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top:-17px;
+  left: 5px;
+  font-weight: bolder;
+}
+
 .dueDateCol{
   display: flex;
   flex-direction: row;

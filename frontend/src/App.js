@@ -71,13 +71,22 @@ function App() {
         ))
     }
 
+    function displayDate(List)
+    {
+        return List.map((d) => (
+            <div className={"date"}>
+                <p>
+                    {d.duedate}
+                </p>
+            </div>
+        ))
+    }
+
     function addBill()
     {
-        axios.post("http://localhost:3000/account/bills", {
-            "name": billTitle,
-            "price": billCost,
-            "duedate": billDate
-
+        axios.post("http://localhost:3000/account", {
+            "bills":[{"name": billTitle,"price": billCost,
+                "duedate": billDate}]
         })
         alert(billTitle + " added to list");
         window.location.reload();
@@ -91,17 +100,15 @@ function App() {
            // setBills(res.data);
             setBalance(res.data.balance);
             setBillName(res.data.bills);
+            //setBillDate(res.data.duedate);
             console.log(res.data)
+            console.log("This is the balance " + balance);
         });
        /* axios.get("http://localhost:3000/account/balance").then((res) => {
             setBalance(res.data);
         });*/
 
     }, []);
-
-
-  console.log(balance);
-  console.log(billName);
 
 
   return (
@@ -169,6 +176,8 @@ function App() {
 
                 <div className="dueDateCol">
                     Due date
+
+                    {displayDate(billName)}
                 </div>
             </div>
 
