@@ -74,7 +74,7 @@ function App() {
     function displayDate(List)
     {
         return List.map((d) => (
-            <div className={"date"}>
+            <div className={"dateLine"}>
                 <p>
                     {d.duedate}
                 </p>

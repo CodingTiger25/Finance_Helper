@@ -5,27 +5,32 @@
     "balance": 4000,
 
 
-  "bills": [
-    {
-      "name": "hulu",
-      "price": 14.99,
-      "id": 1,
-      "duedate": "12/9"
-    },
-    {
-      "id": 0,
-      "name": "Netflix",
-      "price": 15.99,
-      "duedate": "12/15"
-    },
-    {
-      "name": "Car Note",
-      "price": 442.18,
-      "id": 2,
-      "duedate": "12/28"
-    }
-          ]
+    "bills": [
+      {
+        "name": "Hulu",
+        "price": 14.99,
+        "id": 1,
+        "duedate": "3/9"
+      },
+      {
+        "id": 0,
+        "name": "Netflix",
+        "price": 15.99,
+        "duedate": "3/15"
+      },
+      {
+        "name": "Car Note",
+        "price": 442.18,
+        "id": 2,
+        "duedate": "3/28"
+      },
+      {
+        "name": "Youtube Premium",
+        "price": 14.99,
+        "id": 3,
+        "duedate": "3/7"
+      }
+    ]
   }
 
 }
-
