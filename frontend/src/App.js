@@ -84,7 +84,7 @@ function App() {
 
     function addBill()
     {
-        axios.post("http://localhost:3000/account", {
+        axios.post("http://localhost:5000/account", {
             "bills":[{"name": billTitle,"price": billCost,
                 "duedate": billDate}]
         })
@@ -96,13 +96,13 @@ function App() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:3000/account").then((res) => {
+        axios.get("http://localhost:5000/account").then((res) => {
            // setBills(res.data);
-            setBalance(res.data.balance);
-            setBillName(res.data.bills);
+           // setBalance(res.data.balance);
+            setBillName(res.data);
             //setBillDate(res.data.duedate);
             console.log(res.data)
-            console.log("This is the balance " + balance);
+           // console.log("This is the balance " + balance);
         });
        /* axios.get("http://localhost:3000/account/balance").then((res) => {
             setBalance(res.data);
