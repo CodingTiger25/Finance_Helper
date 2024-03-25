@@ -5,5 +5,7 @@ const router = Router();
 
 router.get('/', controller.getAccountData);
 
+router.post('/', controller.addBill);
+
 
 module.exports = router;

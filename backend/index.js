@@ -10,6 +10,5 @@
      res.send("Hello World!");
  });
 
- app.post("http://localhost:5000/account")
 
 app.use("/account", accountRoute);
