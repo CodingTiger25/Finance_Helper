@@ -7,6 +7,7 @@ function App() {
 
   let [balance, setBalance] = useState(0);
 
+
   const [billName, setBillName] = useState([]);
   const [billTitle, setBillTitle] = useState("");
   const [billCost, setBillCost] = useState();
@@ -14,6 +15,7 @@ function App() {
 
       function addItem()
       {
+          document.getElementById('closeBill').style.display = 'block';
           document.getElementById('addBill').style.display = 'block';
       }
     function closeItem(e)
@@ -41,12 +43,19 @@ function App() {
         {
 
         })
-       /* let reduce_c = document.getElementById("reduce");
+    }
 
-        if(reduce_c.checked)
-        {
-            setBalance(balance - e.price);
-        }*/
+    function paidBill(List)
+    {
+        return List.map((d) => (
+            <div className={"billPaid"}>
+                <p>
+                    <button>Paid</button>
+                </p>
+
+            </div>
+            )
+        )
     }
 
     function displayName(List)
@@ -85,8 +94,8 @@ function App() {
     function addBill()
     {
         axios.post("http://localhost:5000/account", {
-            "bills":[{"name": billTitle,"price": billCost,
-                "duedate": billDate}]
+             "name": billTitle,"price": billCost,
+                "duedate": billDate
         })
         alert(billTitle + " added to list");
         window.location.reload();
@@ -122,7 +131,7 @@ function App() {
             ${balance}
         </div>
 
-        <div>
+        <div >
             <button onClick={addItem}>Add item</button>
         </div>
         <div>
@@ -132,7 +141,7 @@ function App() {
 
         </div>
 
-        <div>
+        <div id="closeBill">
             <form id="addBill">
 
                <label> Bill name: </label>
@@ -145,7 +154,10 @@ function App() {
                 }} type={"date"}/>
 
                 <button onClick={addBill}>Submit</button>
+
                 <button onClick={closeItem}>X</button>
+
+
             </form>
         </div>
 
@@ -161,7 +173,10 @@ function App() {
             <div className="namingCon">
                 <div className="paidCol">
                     Paid
+
+                    {paidBill(billName)}
                 </div>
+
                 <div className="nameCol">
                     <p>Name</p>
 
@@ -180,30 +195,6 @@ function App() {
                     {displayDate(billName)}
                 </div>
             </div>
-
-
-           {/* {bills.map((i) =>
-                <div key={i.id}>
-                    <div className="billName">
-                        <div className="checkBill">
-                            <input type={"checkbox"} id = "reduce" onClick={deductBalance(i.price)}/>
-                        </div>
-
-                        <p>{i.name}</p>
-                    </div>
-
-                    <div className="billAmount">
-                        <p>{i.price}</p>
-                    </div>
-
-                    <div className="dueDate">
-                        <p>{i.duedate}</p>
-
-                    </div>
-
-                </div>
-
-            )}*/}
         </div>
     </div>
   );

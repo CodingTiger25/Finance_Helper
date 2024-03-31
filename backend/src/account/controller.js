@@ -17,10 +17,10 @@ const getAccountData = (req, res) => {
 }
 
 const addBill = (req, res) => {
-    const {id, name, price, duedate} = req.body;
+    const { name, price, duedate} = req.body;
 
     pool.query(queries.addBill,
-        [id, name, price, duedate],
+        [ name, price, duedate],
         (error, results) => {
         if (error) throw error;
         res.status(201).send("Added new bill");

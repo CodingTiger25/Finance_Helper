@@ -1,4 +1,4 @@
-const addBill = "INSERT INTO bills (id, name, price,duedate) VALUES ($1, $2, $3, $4)";
+const addBill = "INSERT INTO bills ( name, price,duedate) VALUES ( $1, $2, $3)";
 
 module.exports = {
     addBill
