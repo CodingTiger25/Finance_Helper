@@ -28,7 +28,21 @@ const addBill = (req, res) => {
     )
 }
 
+const billPaid = ( req,res) => {
+
+    const {id} = req.params;
+
+    pool.query(queries.billPaid,
+        [id],
+        (error, results) => {
+        if(error) throw error;
+        res.status(201).send("Bill is paid")
+        })
+
+}
+
 module.exports = {
     getAccountData,
-    addBill
+    addBill,
+    billPaid
 }

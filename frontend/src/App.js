@@ -3,6 +3,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import axios from "axios"
 
+
 function App() {
 
   let [balance, setBalance] = useState(0);
@@ -45,12 +46,12 @@ function App() {
         })
     }
 
-    function paidBill(List)
+    function paidBillButton(List)
     {
         return List.map((d) => (
-            <div className={"billPaid"}>
+            <div key={d.id} className={"billPaid"}>
                 <p>
-                    <button>Paid</button>
+                    <input onChange={billPaid(d.id)} type={"checkbox"}/>
                 </p>
 
             </div>
@@ -58,10 +59,22 @@ function App() {
         )
     }
 
+    function billPaid(id)
+    {
+       console.log('hello')
+        axios.put(`http://localhost:5000/account/${id}`
+    )
+            .then((response) => {
+                console.log("paid")
+            }).catch(e => {
+                console.log(e);
+        })
+    }
+
     function displayName(List)
     {
         return List.map((d) => (
-            <div className={"billTitle"}>
+            <div key={d.id} className={"billTitle"}>
                 <p>
                     {d.name}
                 </p>
@@ -72,7 +85,7 @@ function App() {
     function displayPrice(List)
     {
         return List.map((d) => (
-            <div className={"billPrice"}>
+            <div key={d.id} className={"billPrice"}>
                 <p>
                     {d.price}
                 </p>
@@ -83,8 +96,8 @@ function App() {
     function displayDate(List)
     {
         return List.map((d) => (
-            <div className={"dateLine"}>
-                <p>
+            <div key={d.id} className={"dateLine"}>
+                <p >
                     {d.duedate}
                 </p>
             </div>
@@ -99,23 +112,14 @@ function App() {
         })
         alert(billTitle + " added to list");
         window.location.reload();
-
     }
-
-
 
     useEffect(() => {
         axios.get("http://localhost:5000/account").then((res) => {
-           // setBills(res.data);
-           // setBalance(res.data.balance);
+
             setBillName(res.data);
-            //setBillDate(res.data.duedate);
             console.log(res.data)
-           // console.log("This is the balance " + balance);
         });
-       /* axios.get("http://localhost:3000/account/balance").then((res) => {
-            setBalance(res.data);
-        });*/
 
     }, []);
 
@@ -174,7 +178,7 @@ function App() {
                 <div className="paidCol">
                     Paid
 
-                    {paidBill(billName)}
+                    {paidBillButton(billName)}
                 </div>
 
                 <div className="nameCol">
