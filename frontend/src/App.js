@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import {useEffect, useState} from "react";
 import axios from "axios"
+import {QueryClient, useQuery} from "@tanstack/react-query";
 
+
+const queryClient = new QueryClient()
 
 function App() {
 
@@ -13,8 +16,9 @@ function App() {
   const [billTitle, setBillTitle] = useState("");
   const [billCost, setBillCost] = useState();
   const [billDate, setBillDate] = useState();
+  const [isPaid,setIsPaid] = useState();
 
-      function addItem()
+    function addItem()
       {
           document.getElementById('closeBill').style.display = 'block';
           document.getElementById('addBill').style.display = 'block';
@@ -28,6 +32,17 @@ function App() {
     function addBalance()
     {
         document.getElementById('addBalance').style.display = 'block';
+    }
+
+    function expenseView()
+    {
+        document.getElementById('openMenu').style.display = 'block';
+        document.getElementById('closeMenu').style.display = 'block';
+    }
+    function closeExpenseView(e)
+    {
+        e.preventDefault()
+        document.getElementById('closeMenu').style.display = 'none';
     }
 
     function submitBalance(e)
@@ -46,12 +61,26 @@ function App() {
         })
     }
 
+
+    function paidBo(ID) {
+        /*var chk = document.getElementById("box");
+
+        if (chk.checked) {
+            localStorage.setItem("paid", "true");
+            console.log(localStorage.getItem("paid"))
+        } else {
+            localStorage.setItem("paid", "false");
+
+        }*/
+    }
+
     function paidBillButton(List)
     {
         return List.map((d) => (
             <div key={d.id} className={"billPaid"}>
                 <p>
-                    <input onChange={billPaid(d.id)} type={"checkbox"}/>
+                    <input onChange={paidBo(d.id)} type={"checkbox"} id="box"/>
+
                 </p>
 
             </div>
@@ -61,7 +90,6 @@ function App() {
 
     function billPaid(id)
     {
-       console.log('hello')
         axios.put(`http://localhost:5000/account/${id}`
     )
             .then((response) => {
@@ -93,6 +121,7 @@ function App() {
         ))
     }
 
+
     function displayDate(List)
     {
         return List.map((d) => (
@@ -121,6 +150,12 @@ function App() {
             console.log(res.data)
         });
 
+       /* let chk = document.getElementById("box");
+        if(chk.checked)
+        {
+            setIsPaid(chk);
+        }*/
+
     }, []);
 
 
@@ -139,9 +174,20 @@ function App() {
             <button onClick={addItem}>Add item</button>
         </div>
         <div>
+            <button onClick={expenseView}> Delete expense</button>
+        </div>
+        <div>
             <button onClick={addBalance}>Add balance</button>
         </div>
         <div>
+
+        </div>
+        <div id="closeMenu">
+            <p id="openMenu">
+                Test
+            </p>
+
+            <button onClick={closeExpenseView}> Close</button>
 
         </div>
 

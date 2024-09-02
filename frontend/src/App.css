@@ -53,6 +53,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   column-count: 4;
 }
 
+.expense-box{
+  display:none;
+}
+
+
+
 .paidCol{
   display: flex;
   flex-direction: column;
@@ -171,9 +177,19 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 
 }
 
+#openMenu{
+  display: none;
+}
+
+#closeMenu{
+  display: none;
+}
+
 #addBalance{
   display: none;
 }
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
